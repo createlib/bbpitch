@@ -212,30 +212,30 @@
                 </p>
             </div>
 
-            <!-- Flow Diagram using HTML/Grid -->
-            <div class="grid md:grid-cols-4 gap-4 items-center justify-center text-center relative">
+            <!-- Flow Diagram using Flexbox for better layout control -->
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-center text-center relative max-w-6xl mx-auto">
                 <!-- Step 1 -->
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300 w-full md:flex-1">
                     <div class="text-5xl mb-4">📢</div>
                     <h3 class="text-lg font-bold mb-2">プレゼン</h3>
                     <p class="text-sm text-gray-400">イベントで熱意を伝える</p>
                 </div>
 
                 <!-- Arrow Desktop -->
-                <div class="hidden md:block text-gray-500 text-4xl">➡</div>
+                <div class="hidden md:block text-gray-500 text-4xl shrink-0 px-2">➡</div>
                 
                 <!-- Step 2 -->
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300 w-full md:flex-1">
                     <div class="text-5xl mb-4">🎬</div>
                     <h3 class="text-lg font-bold mb-2">動画化</h3>
                     <p class="text-sm text-gray-400">プロが編集しプラットフォームへ</p>
                 </div>
 
                 <!-- Arrow Desktop -->
-                <div class="hidden md:block text-gray-500 text-4xl">➡</div>
+                <div class="hidden md:block text-gray-500 text-4xl shrink-0 px-2">➡</div>
 
                 <!-- Step 3 -->
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 border-2 border-yellow-500 relative z-10 transform transition hover:scale-105 duration-300 shadow-[0_0_20px_rgba(197,160,101,0.3)]">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 border-2 border-yellow-500 relative z-10 transform transition hover:scale-105 duration-300 shadow-[0_0_20px_rgba(197,160,101,0.3)] w-full md:flex-1">
                     <div class="text-5xl mb-4">💸</div>
                     <h3 class="text-lg font-bold mb-2 text-yellow-400">応援・支援</h3>
                     <p class="text-sm text-gray-400">URLを配るだけで支援が集まる</p>
