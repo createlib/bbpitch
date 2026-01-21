@@ -161,8 +161,11 @@
                 
                 <!-- Text Content -->
                 <div>
-                    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">
-                        魅力①：市場価格を破壊する<br><span class="accent-text">圧倒的なコストパフォーマンス</span>
+                    <!-- 修正: スマホ時のサイズを text-lg から text-xl (または text-2xl) に拡大し、見出しとしての存在感を強化 -->
+                    <!-- 以前: text-lg sm:text-2xl md:text-3xl -->
+                    <!-- 今回: text-xl sm:text-2xl md:text-3xl -->
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 mb-6 leading-tight">
+                        魅力①：市場価格を破壊する<br class="hidden sm:inline"><span class="accent-text block sm:inline mt-1 sm:mt-0">圧倒的なコストパフォーマンス</span>
                     </h2>
                     <p class="text-lg text-gray-500 mb-6">
                         通常、プロ機材（シネマカメラ等）を使って15分間のPR動画を撮影・編集すると、市場価格で20〜30万円かかります。しかし、BB PITCHなら参加するだけでこのコストを大幅に削減できます。
@@ -190,8 +193,8 @@
                 </div>
 
                 <!-- Chart Visualization -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-inner">
-                    <h3 class="text-center font-bold text-gray-700 mb-4">動画制作費の比較シミュレーション</h3>
+                <div class="bg-gray-50 p-4 sm:p-6 rounded-xl shadow-inner w-full overflow-hidden">
+                    <h3 class="text-center font-bold text-gray-700 mb-4 text-sm sm:text-base">動画制作費の比較シミュレーション</h3>
                     <div class="chart-container">
                         <canvas id="costChart"></canvas>
                     </div>
@@ -206,7 +209,8 @@
     <section class="py-16 primary-bg text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold mb-4">魅力②：革命的「独自プラットフォーム」</h2>
+                <!-- 修正: スマホ時のサイズを text-xl に拡大 -->
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold mb-4">魅力②：革命的「独自プラットフォーム」</h2>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                     YouTubeの「拡散力」と、クラウドファンディングの「資金調達力」をいいとこ取り。
                     <span class="accent-text font-bold">手数料ゼロ</span>で自社のクラファンが始められます。
@@ -259,7 +263,8 @@
     <!-- Persona Section -->
     <section class="py-16 bg-white" id="personas">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-8">
+            <!-- 修正: スマホ時のサイズを text-xl に拡大 -->
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 text-center mb-8">
                 魅力③：あらゆるフェーズに対応
             </h2>
             <p class="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
@@ -268,7 +273,9 @@
 
             <div class="w-full max-w-4xl mx-auto">
                 <!-- Tabs -->
-                <div class="flex border-b border-gray-200 justify-center space-x-8 overflow-x-auto" id="persona-tabs">
+                <!-- 修正: justify-center を justify-start md:justify-center に変更し、スマホでの左詰めスクロールを有効化 -->
+                <!-- 修正: space-x-8 を space-x-4 md:space-x-8 に変更し、スマホでの間隔を調整 -->
+                <div class="flex border-b border-gray-200 justify-start md:justify-center space-x-4 md:space-x-8 overflow-x-auto" id="persona-tabs">
                     <!-- Tabs injected via JS -->
                 </div>
 
@@ -283,7 +290,8 @@
     <!-- Event Details & CTA -->
     <section class="py-16 bg-gray-900 text-white" id="event-details">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-extrabold mb-8">開催概要</h2>
+            <!-- 修正: 開催概要のタイトルもバランスを合わせて調整（大きすぎず小さすぎず） -->
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-8">開催概要</h2>
             
             <div class="bg-gray-800 rounded-lg p-8 shadow-2xl mb-12 text-left">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -442,7 +450,8 @@
             const ctx = document.getElementById('costChart').getContext('2d');
             
             // Data Setup
-            const labels = ['市場価格 (相場)', 'BB PICH (一般)', 'BB PICH (メンバー)'];
+            // ラベルを配列にすることで、Chart.jsで改行表示させ、スマホでの横幅圧迫を防ぐ
+            const labels = [['市場価格', '(相場)'], ['BB PICH', '(一般)'], ['BB PICH', '(メンバー)']];
             const dataValues = [300000, 50000, 15000];
             const backgroundColors = ['#E2E8F0', '#1A202C', '#C5A065']; // Grey, Navy, Gold
             
@@ -476,6 +485,11 @@
                                     }
                                     return label;
                                 },
+                                title: function(tooltipItems) {
+                                    // ツールチップのタイトルは改行を結合して表示
+                                    const item = tooltipItems[0];
+                                    return Array.isArray(item.label) ? item.label.join(' ') : item.label;
+                                },
                                 afterLabel: function(context) {
                                     if (context.dataIndex === 0) return "機材費・編集費・人件費など";
                                     if (context.dataIndex === 1) return "約25万円もお得！";
@@ -498,7 +512,7 @@
                                 callback: function(value) {
                                     return value / 10000 + '万円';
                                 },
-                                font: { family: "'Noto Sans JP', sans-serif" }
+                                font: { family: "'Noto Sans JP', sans-serif", size: 10 }
                             },
                             grid: {
                                 borderDash: [2, 4],
@@ -510,7 +524,8 @@
                             ticks: {
                                 font: { 
                                     family: "'Noto Sans JP', sans-serif",
-                                    weight: 'bold'
+                                    weight: 'bold',
+                                    size: window.innerWidth < 400 ? 10 : 12 // スマホ画面幅ならフォントを小さく
                                 }
                             }
                         }
@@ -532,7 +547,8 @@
             // Create Tabs
             Object.keys(personaData).forEach(key => {
                 const btn = document.createElement('button');
-                btn.className = `pb-4 px-6 text-sm font-medium transition-colors whitespace-nowrap focus:outline-none ${key === activeKey ? 'tab-active' : 'tab-inactive'}`;
+                // 修正: paddingをスマホ用に小さく(px-3 md:px-6)、flex-shrink-0を追加して潰れ防止
+                btn.className = `pb-4 px-3 md:px-6 text-sm font-medium transition-colors whitespace-nowrap focus:outline-none flex-shrink-0 ${key === activeKey ? 'tab-active' : 'tab-inactive'}`;
                 btn.innerText = personaData[key].label;
                 btn.onclick = () => switchPersona(key);
                 tabsContainer.appendChild(btn);
@@ -547,7 +563,8 @@
                 // Update Tab Styles
                 Array.from(tabsContainer.children).forEach((btn, index) => {
                     const dataKey = Object.keys(personaData)[index];
-                    btn.className = `pb-4 px-6 text-sm font-medium transition-colors whitespace-nowrap focus:outline-none ${dataKey === activeKey ? 'tab-active' : 'tab-inactive'}`;
+                    // 修正: paddingとflex-shrink-0のクラスをこちらにも適用
+                    btn.className = `pb-4 px-3 md:px-6 text-sm font-medium transition-colors whitespace-nowrap focus:outline-none flex-shrink-0 ${dataKey === activeKey ? 'tab-active' : 'tab-inactive'}`;
                 });
 
                 // Animate Content Out
