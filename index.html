@@ -8,28 +8,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Phosphor Icons (High quality icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- Chosen Palette: Warm Neutral Foundation with Deep Navy & Muted Gold Accents -->
-    <!-- Application Structure Plan: 
-         1. Hero Section: Immediate hook with value proposition and event details.
-         2. Problem/Solution Grid: Interactive cards to address user pain points directly.
-         3. The "Cost Logic" Dashboard: Quantitative visualization (Bar Chart) showing the massive ROI/Cost saving.
-         4. The Platform Ecosystem: A visual flow explaining the "YouTube x Crowdfunding" model.
-         5. Persona Explorer: Tabbed interface allowing users to see tailored benefits for their specific role.
-         6. Event Logistics & CTA: Final details and conversion point.
-         Structure chosen to guide the user from emotional connection (pain points) to logical justification (cost/platform) to personal relevance (persona).
-    -->
     
     <!-- Visualization & Content Choices:
-         1. Cost Comparison Chart (Chart.js): Goal: Inform/Compare. Vertical Bar chart comparing Market Price (300k) vs BB PICH prices. Justification: Instantly visualizes the "No-brainer" value.
-         2. Platform Flow (CSS/HTML): Goal: Change/Process. Step-by-step visual using Flexbox and arrows. Justification: Explains the complex "Fee-free Crowdfunding" concept simply.
-         3. Persona Tabs (JS): Goal: Personalize. Interactive tabs changing content. Justification: Different users (Startups vs Shops) have different needs; this filters info relevantly.
-         4. Interactive Problem Cards (JS): Goal: Engage. Hover/Click effects to reveal solutions. Justification: Active participation in identifying problems makes the solution feel more tailored.
+         1. Icons (Phosphor Icons): Replaced emojis with "Regular" or "Light" weight icons for a premium, professional look. 
+         2. Colors: Icons are now styled with specific Tailwind classes (text-gray-700, accent-text) to match the brand palette.
     -->
 
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used (using Web Font Icons). NO Mermaid JS used. -->
 
     <style>
         body {
@@ -73,6 +64,10 @@
         .tab-inactive:hover {
             color: #4A5568;
         }
+        /* Icon utility */
+        .ph {
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -110,7 +105,7 @@
                     <div class="mt-5 sm:mt-8 sm:flex sm:justify-start lg:justify-start">
                         <div class="rounded-md shadow">
                             <a href="#value-analysis" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white primary-bg hover:bg-gray-800 md:py-4 md:text-lg md:px-10">
-                                詳しく見る ↓
+                                詳しく見る <i class="ph ph-arrow-down ml-1"></i>
                             </a>
                         </div>
                     </div>
@@ -118,22 +113,22 @@
             </div>
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-50 flex items-center justify-center">
-            <!-- Concept Visual using CSS/HTML -->
-            <div class="p-8 grid grid-cols-2 gap-4 w-full max-w-md opacity-80">
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40">
-                    <span class="text-4xl mb-2">🎥</span>
+            <!-- Concept Visual using CSS/HTML & Phosphor Icons -->
+            <div class="p-8 grid grid-cols-2 gap-4 w-full max-w-md opacity-90">
+                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40 border-b-4 border-gray-200 hover:border-[#C5A065] transition-colors duration-300">
+                    <i class="ph ph-film-strip text-4xl mb-3 text-gray-700"></i>
                     <span class="font-bold text-gray-800">PR動画</span>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40">
-                    <span class="text-4xl mb-2">💰</span>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40 border-b-4 border-gray-200 hover:border-[#C5A065] transition-colors duration-300">
+                    <i class="ph ph-hand-heart text-4xl mb-3 text-gray-700"></i>
                     <span class="font-bold text-gray-800">応援獲得</span>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40">
-                    <span class="text-4xl mb-2">🤝</span>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40 border-b-4 border-gray-200 hover:border-[#C5A065] transition-colors duration-300">
+                    <i class="ph ph-users-three text-4xl mb-3 text-gray-700"></i>
                     <span class="font-bold text-gray-800">仲間を獲得</span>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40">
-                    <span class="text-4xl mb-2">🚀</span>
+                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-center text-center h-40 border-b-4 border-gray-200 hover:border-[#C5A065] transition-colors duration-300">
+                    <i class="ph ph-rocket-launch text-4xl mb-3 text-gray-700"></i>
                     <span class="font-bold text-gray-800">認知拡大</span>
                 </div>
             </div>
@@ -174,15 +169,21 @@
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-start">
-                            <span class="flex-shrink-0 h-6 w-6 rounded-full primary-bg flex items-center justify-center text-white text-xs">✓</span>
+                            <span class="flex-shrink-0 h-6 w-6 rounded-full primary-bg flex items-center justify-center text-white text-xs">
+                                <i class="ph-bold ph-check"></i>
+                            </span>
                             <span class="ml-3 text-base text-gray-700">プロクオリティの撮影・編集済み動画</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="flex-shrink-0 h-6 w-6 rounded-full primary-bg flex items-center justify-center text-white text-xs">✓</span>
+                            <span class="flex-shrink-0 h-6 w-6 rounded-full primary-bg flex items-center justify-center text-white text-xs">
+                                <i class="ph-bold ph-check"></i>
+                            </span>
                             <span class="ml-3 text-base text-gray-700">著作権フリーで二次利用が可能</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="flex-shrink-0 h-6 w-6 rounded-full primary-bg flex items-center justify-center text-white text-xs">✓</span>
+                            <span class="flex-shrink-0 h-6 w-6 rounded-full primary-bg flex items-center justify-center text-white text-xs">
+                                <i class="ph-bold ph-check"></i>
+                            </span>
                             <span class="ml-3 text-base text-gray-700">投資家へのプレゼン機会もセット</span>
                         </li>
                     </ul>
@@ -215,28 +216,38 @@
             <!-- Flow Diagram using Flexbox for better layout control -->
             <div class="flex flex-col md:flex-row gap-4 items-center justify-center text-center relative max-w-6xl mx-auto">
                 <!-- Step 1 -->
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300 w-full md:flex-1">
-                    <div class="text-5xl mb-4">📢</div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300 w-full md:flex-1 group">
+                    <div class="mb-4 text-gray-400 group-hover:text-white transition-colors">
+                        <i class="ph ph-microphone-stage text-5xl"></i>
+                    </div>
                     <h3 class="text-lg font-bold mb-2">プレゼン</h3>
                     <p class="text-sm text-gray-400">イベントで熱意を伝える</p>
                 </div>
 
                 <!-- Arrow Desktop -->
-                <div class="hidden md:block text-gray-500 text-4xl shrink-0 px-2">➡</div>
+                <div class="hidden md:block text-gray-500 text-3xl shrink-0 px-2">
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
                 
                 <!-- Step 2 -->
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300 w-full md:flex-1">
-                    <div class="text-5xl mb-4">🎬</div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 relative z-10 transform transition hover:scale-105 duration-300 w-full md:flex-1 group">
+                    <div class="mb-4 text-gray-400 group-hover:text-white transition-colors">
+                        <i class="ph ph-video-camera text-5xl"></i>
+                    </div>
                     <h3 class="text-lg font-bold mb-2">動画化</h3>
                     <p class="text-sm text-gray-400">プロが編集しプラットフォームへ</p>
                 </div>
 
                 <!-- Arrow Desktop -->
-                <div class="hidden md:block text-gray-500 text-4xl shrink-0 px-2">➡</div>
+                <div class="hidden md:block text-gray-500 text-3xl shrink-0 px-2">
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
 
                 <!-- Step 3 -->
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 border-2 border-yellow-500 relative z-10 transform transition hover:scale-105 duration-300 shadow-[0_0_20px_rgba(197,160,101,0.3)] w-full md:flex-1">
-                    <div class="text-5xl mb-4">💸</div>
+                    <div class="mb-4 text-yellow-500">
+                        <i class="ph ph-heart text-5xl"></i>
+                    </div>
                     <h3 class="text-lg font-bold mb-2 text-yellow-400">応援・支援</h3>
                     <p class="text-sm text-gray-400">URLを配るだけで支援が集まる</p>
                     <div class="mt-2 inline-block bg-yellow-600 text-white text-xs px-2 py-1 rounded">手数料 0%</div>
@@ -304,7 +315,7 @@
                 <p class="text-xl font-bold">リスクはゼロ。あるのは可能性だけ。</p>
                 <p class="text-gray-400 mb-8">あなたのビジネスの「次の一手」を、ここから始めませんか？</p>
                 <a href="https://forms.gle/aMjp1jGQxrXv5Q117" target="_blank" class="inline-block w-full sm:w-auto text-center px-10 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold text-lg rounded-full shadow-lg transform transition hover:scale-105 duration-200">
-                    今すぐエントリーする
+                    今すぐエントリーする <i class="ph-bold ph-arrow-right ml-2"></i>
                 </a>
                 <p class="text-xs text-gray-500 mt-4">
                     ※QRコードからもお申し込みいただけます。<br>
@@ -324,39 +335,40 @@
     <!-- JavaScript Logic -->
     <script>
         // --- Data & State ---
+        // Replacing emojis with Phosphor Icon class names
         const problemsData = [
             {
-                icon: "💸",
+                iconClass: "ph-coins",
                 title: "活動資金を集めたい",
                 desc: "融資や出資が欲しいが、どこでアピールすればいいかわからない。",
                 solution: "投資家や経営者が集まるギャラリーの前でプレゼン。その場で興味を持たれれば、後日出資や提携の話に進む可能性があります。"
             },
             {
-                icon: "🤝",
+                iconClass: "ph-users-three",
                 title: "仲間が欲しい",
                 desc: "ビジネスパートナーを探しているが、熱意を伝える場がない。",
                 solution: "熱のこもったプレゼン動画は、最高のリクルーティングツールになります。ビジョンに共感する仲間を効率的に集められます。"
             },
             {
-                icon: "🧪",
+                iconClass: "ph-flask",
                 title: "テストマーケティング",
                 desc: "クラファンをやりたいが、手数料（15-20%）が高すぎる。",
                 solution: "独自プラットフォームなら手数料0%。動画を見て「応援したい」と思った人からダイレクトに支援を受けられます。"
             },
             {
-                icon: "📣",
+                iconClass: "ph-presentation-chart",
                 title: "営業ツールがない",
                 desc: "自社の強みを短時間で伝える動画素材がない。",
                 solution: "プロが撮影・編集した10〜12分のプレゼン動画を提供。HPへの掲載や営業時の資料として永続的に活用できます。"
             },
             {
-                icon: "🎤",
+                iconClass: "ph-microphone",
                 title: "プレゼン経験",
                 desc: "人前で話す度胸をつけたい。フィードバックが欲しい。",
                 solution: "緊張感のあるステージでの発表と、鋭い質疑応答。この経験自体が起業家としてのレベルを一段階引き上げます。"
             },
             {
-                icon: "💎",
+                iconClass: "ph-medal",
                 title: "実績作り",
                 desc: "まずは小さな実績を作って信頼を得たい。",
                 solution: "「ピッチイベント登壇企業」という実績と、しっかりした映像があることで、対外的な信用度が大きく向上します。"
@@ -368,25 +380,25 @@
                 label: "スタートアップ企業",
                 title: "投資家へのアピールとパートナー募集に",
                 content: "創業期のスタートアップにとって、最も重要なのは「認知」と「資金」です。BB PICHでは、投資家への直接プレゼンで資金調達のチャンスを得られるだけでなく、完成した動画を使ってエンジェル投資家やVC回りを効率化できます。",
-                emoji: "🚀"
+                iconClass: "ph-rocket"
             },
             shop: {
                 label: "店舗・個人事業主",
                 title: "お店や商品のPR動画として",
                 content: "「お店のこだわり」や「商品への想い」は、文字だけでは伝わりません。店主が自ら語る高品質な動画をHPやSNSに掲載することで、ファンの獲得や来店促進に直結します。制作費5万円は、通常の広告費と比べても破格です。",
-                emoji: "🏪"
+                iconClass: "ph-storefront"
             },
             bizdev: {
                 label: "新規事業担当者",
                 title: "新サービスを世に広めるために",
                 content: "社内ベンチャーや新規プロジェクトのテストマーケティングに最適です。市場の反応をダイレクトに見ることができ、独自プラットフォームでの先行予約販売（クラファン的利用）も手数料ゼロで行えます。",
-                emoji: "👔"
+                iconClass: "ph-briefcase"
             },
             dreamer: {
                 label: "これから起業する人",
                 title: "アイデアを形にし、ファンを作る",
                 content: "まだ商品がなくても大丈夫。「これから何をしたいか」というビジョンを語ることで、初期のファン（応援者）を獲得できます。起業準備中の記録としても貴重な映像資産になります。",
-                emoji: "🌱"
+                iconClass: "ph-plant"
             }
         };
 
@@ -406,11 +418,13 @@
                 
                 // Front content
                 card.innerHTML = `
-                    <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">${item.icon}</div>
+                    <div class="text-5xl mb-4 text-[#C5A065] group-hover:scale-110 transition-transform duration-300">
+                        <i class="ph ${item.iconClass}"></i>
+                    </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">${item.title}</h3>
                     <p class="text-gray-500 mb-4 flex-grow">${item.desc}</p>
                     <div class="text-sm font-bold accent-text mt-auto flex items-center">
-                        解決策を見る <span class="ml-1 text-lg">→</span>
+                        解決策を見る <i class="ph-bold ph-arrow-right ml-1"></i>
                     </div>
                     
                     <!-- Overlay Content (Solution) -->
@@ -549,8 +563,8 @@
                 const data = personaData[key];
                 contentContainer.innerHTML = `
                     <div class="flex flex-col md:flex-row items-center w-full transition-opacity duration-300">
-                        <div class="text-6xl mb-6 md:mb-0 md:mr-8 p-6 bg-white rounded-full shadow-lg">
-                            ${data.emoji}
+                        <div class="text-6xl mb-6 md:mb-0 md:mr-8 p-6 bg-white rounded-full shadow-lg text-[#1A202C]">
+                            <i class="ph ${data.iconClass}"></i>
                         </div>
                         <div class="text-left">
                             <h3 class="text-2xl font-bold text-gray-900 mb-2">${data.title}</h3>
